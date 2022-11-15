@@ -21,6 +21,7 @@ import { Itunes, ItunesData } from "../../types/itunes.type";
 
 function Search() {
   const [showModal, setshowModal] = useState(false);
+  const [showLoadMore, setshowLoadMore] = useState(true);
   const [resultData, setResultData] = useState<Itunes | undefined>(undefined);
   const [showed, setShowed] = useState<ItunesData[] | []>([]);
   const navigate = useNavigate();
@@ -32,6 +33,13 @@ function Search() {
     if (keyword) searchMusic(keyword);
     setshowModal(false);
   }, [keyword]);
+
+  useEffect(() => {
+    if (resultData && showed.length >= resultData?.results.length)
+      setshowLoadMore(false);
+    else setshowLoadMore(true);
+    /* eslint-disable react-hooks/exhaustive-deps */
+  }, [showed]);
 
   useEffect(() => {
     setPage(0);
@@ -90,7 +98,9 @@ function Search() {
             showed.map((data: ItunesData) => (
               <Card data={data} key={`${data.trackId}${Math.random()}`} />
             ))}
-          <LoadMore onClick={handleLoadMore}>Load More</LoadMore>
+          {showLoadMore && (
+            <LoadMore onClick={handleLoadMore}>Load More</LoadMore>
+          )}
         </ResultsWrapper>
       </ContentWrapper>
     </Wrapper>
