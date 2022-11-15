@@ -35,6 +35,7 @@ function Search() {
   useEffect(() => {
     setPage(0);
     if (resultData && resultData.results) updateShowed(true);
+    /* eslint-disable react-hooks/exhaustive-deps */
   }, [resultData]);
 
   const updateShowed = (isinit?: boolean) => {
