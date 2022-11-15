@@ -17,11 +17,12 @@ import Card from "../../components/Card/Card";
 import Modal from "../../components/Modal/Modal";
 import { useNavigate, useParams } from "react-router-dom";
 import { capitalFirstWord } from "../../helpers/formatter";
+import { Itunes, ItunesData } from "../../types/itunes.type";
 
 function Search() {
   const [showModal, setshowModal] = useState(false);
-  const [resultData, setResultData] = useState<any | undefined>(undefined);
-  const [showed, setShowed] = useState<any | undefined>([]);
+  const [resultData, setResultData] = useState<Itunes | undefined>(undefined);
+  const [showed, setShowed] = useState<ItunesData[] | []>([]);
   const navigate = useNavigate();
   const { keyword } = useParams();
   const [page, setPage] = useState(0);
@@ -39,16 +40,17 @@ function Search() {
   }, [resultData]);
 
   const updateShowed = (isinit?: boolean) => {
-    if (isinit)
-      setShowed(
-        resultData.results.slice(page * perPage, page * perPage + perPage)
-      );
-    else
-      setShowed((old: any) =>
-        old.concat(
+    if (resultData && resultData.results)
+      if (isinit)
+        setShowed(
           resultData.results.slice(page * perPage, page * perPage + perPage)
-        )
-      );
+        );
+      else
+        setShowed((old: ItunesData[]) =>
+          old.concat(
+            resultData.results.slice(page * perPage, page * perPage + perPage)
+          )
+        );
   };
 
   const handleLoadMore = () => {
@@ -85,7 +87,7 @@ function Search() {
         </Title>
         <ResultsWrapper>
           {showed &&
-            showed.map((data: any) => (
+            showed.map((data: ItunesData) => (
               <Card data={data} key={`${data.trackId}${Math.random()}`} />
             ))}
           <LoadMore onClick={handleLoadMore}>Load More</LoadMore>

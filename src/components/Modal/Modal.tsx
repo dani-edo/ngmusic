@@ -4,7 +4,7 @@ import { Close, InputSearch, InputWrapper, Title, Wrapper } from "./styles";
 import { useNavigate } from "react-router-dom";
 import { ChangeEventHandler, useState } from "react";
 
-function Modal({ onClose }: { onClose: any }) {
+function Modal({ onClose }: { onClose: Function }) {
   const [searchValue, setSearchValue] = useState("");
   const navigate = useNavigate();
 

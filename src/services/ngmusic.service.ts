@@ -1,13 +1,9 @@
 import http from "../http/axios";
-// import Meals, {
-//   MealsByFilter,
-//   ResArea,
-//   ResCategory,
-// } from "../types/recipe.type";
+import { Itunes } from "../types/itunes.type";
 
 class NgMusicService {
   getByKeyword(keyword: string) {
-    return http.get<any>(`/search?term=${keyword}`);
+    return http.get<Itunes>(`/search?term=${keyword}`);
   }
 }
 export default new NgMusicService();

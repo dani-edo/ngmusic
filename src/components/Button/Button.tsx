@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { MouseEventHandler, ReactNode } from "react";
 import { Wrapper } from "./styles";
 
 function Button({
@@ -9,8 +9,8 @@ function Button({
 }: {
   children: ReactNode;
   variant?: string;
-  type?: any;
-  onClick?: any;
+  type?: "button" | "submit" | "reset" | undefined;
+  onClick?: MouseEventHandler<HTMLButtonElement> | undefined;
 }) {
   return (
     <Wrapper onClick={onClick} className={variant} type={type}>

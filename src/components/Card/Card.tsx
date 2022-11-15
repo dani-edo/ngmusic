@@ -11,8 +11,9 @@ import {
 // import logo from "../../assets/logo.svg";
 import play from "../../assets/play-circle.svg";
 import dollar from "../../assets/currency-dollar.svg";
+import { ItunesData } from "../../types/itunes.type";
 
-function Card({ data }: { data: any }) {
+function Card({ data }: { data: ItunesData }) {
   return (
     <Wrapper>
       <ImageWrapper>
