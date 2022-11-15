@@ -16,7 +16,7 @@ export const ImgWrapper = styled.div`
   display: flex;
 `;
 
-export const InputSearch = styled.div`
+export const InputSearch = styled.form`
   display: flex;
   flex-direction: column;
   width: 100%;

@@ -34,3 +34,16 @@ export const Close = styled.button`
   right: 12px;
   top: 18px;
 `;
+
+export const InputSearch = styled.form`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  input {
+    width: 100%;
+    height: 40px;
+    border-radius: 20px;
+    border: none;
+    text-align: center;
+  }
+`;

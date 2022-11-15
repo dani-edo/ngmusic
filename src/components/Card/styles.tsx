@@ -19,11 +19,13 @@ export const ImageWrapper = styled.div`
   margin-right: 12px;
   border-radius: 10px;
   position: relative;
-
-  /* temp */
-  background-color: ${({ theme }) => theme.colors.green};
 `;
 
+export const Tumbnail = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
 export const PlayIcon = styled.img`
   position: absolute;
   left: 50%;
